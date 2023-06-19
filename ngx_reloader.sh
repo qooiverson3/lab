@@ -4,7 +4,7 @@ function reload () {
     nginx -s reload
 }
 
-function check () {
+function pre_check () {
     nginx -t
 }
 
