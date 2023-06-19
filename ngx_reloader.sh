@@ -27,12 +27,12 @@ function init () {
 }
 
 function main () {
-    log "sleeping 1m for warnup.."
+    log "waiting for warn-up for 1m.."
     sleep 1m
-    log "agent is running.."
+    log "reloader is running.."
 
     while true; do
-        for conf in `cat confs`; do
+        for conf in `cat configs`; do
             last_modified=`stat -c %Y ${CONFIG_FILES}`
 
             current_modified=`stat -c %Y ${CONFIG_FILES}`
@@ -46,7 +46,6 @@ function main () {
                 fi
 
 
-
                 backup
             fi
         done
@@ -55,7 +54,3 @@ function main () {
 }
 
 main
-
-
-
-
