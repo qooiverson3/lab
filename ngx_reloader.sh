@@ -23,7 +23,20 @@ function log () {
 }
 
 function init () {
+    declare -A arr
+    configs=("/etc/nginx/nginx.conf" "/etc/nginx/conf.d/default.conf")
 
+    count=0
+    for conf in ${configs[@]};do
+        arr[$conf]=`stat -c %Y ${conf}`
+
+
+        #configs[$count]=`stat -c %Y ${conf}`
+            #(( count++ ))
+    done
+
+    echo ${arr["/etc/nginx/nginx.conf"]}
+    echo ${arr["/etc/nginx/conf.d/default.conf"]}
 }
 
 function main () {
